@@ -38,7 +38,8 @@ public class AutoCreationCmd {
    * @return A Command variable telling the robot to drive
    */
   public Command AutoDriveCmd(
-      DrivetrainSubsystem _drivetrain, List<Translation2d> waypoints, Pose2d finalrest) {
+      //DrivetrainSubsystem _drivetrain, List<Translation2d> waypoints, Pose2d finalrest) {
+        DrivetrainSubsystem _drivetrain, List<Pose2d> waypoints) {
     drivetrain = _drivetrain;
 
     TrajectoryConfig trajectoryConfig =
@@ -56,7 +57,7 @@ public class AutoCreationCmd {
     // Generate trajectory
     Trajectory trajectory =
         TrajectoryGenerator.generateTrajectory(
-            drivetrain.getPose(), waypoints, finalrest, trajectoryConfig);
+            waypoints, trajectoryConfig);
 
     // Construct command to follow trajectory
     SwerveControllerCommand swerveControllerCommand =
@@ -80,8 +81,7 @@ public class AutoCreationCmd {
   public Command AutoDriveSpeedVar(
       Double maxSpeed,
       DrivetrainSubsystem _drivetrain,
-      List<Translation2d> waypoints,
-      Pose2d finalrest) {
+      List<Pose2d> waypoints) {
     drivetrain = _drivetrain;
 
     TrajectoryConfig trajectoryConfig =
@@ -97,7 +97,7 @@ public class AutoCreationCmd {
     // Generate trajectory
     Trajectory trajectory =
         TrajectoryGenerator.generateTrajectory(
-            drivetrain.getPose(), waypoints, finalrest, trajectoryConfig);
+            waypoints, trajectoryConfig);
 
     // Construct command to follow trajectory
     SwerveControllerCommand swerveControllerCommand =
