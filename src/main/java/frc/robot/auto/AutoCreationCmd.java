@@ -7,7 +7,6 @@ package frc.robot.auto;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
@@ -38,8 +37,8 @@ public class AutoCreationCmd {
    * @return A Command variable telling the robot to drive
    */
   public Command AutoDriveCmd(
-      //DrivetrainSubsystem _drivetrain, List<Translation2d> waypoints, Pose2d finalrest) {
-        DrivetrainSubsystem _drivetrain, List<Pose2d> waypoints) {
+      // DrivetrainSubsystem _drivetrain, List<Translation2d> waypoints, Pose2d finalrest) {
+      DrivetrainSubsystem _drivetrain, List<Pose2d> waypoints) {
     drivetrain = _drivetrain;
 
     TrajectoryConfig trajectoryConfig =
@@ -55,9 +54,7 @@ public class AutoCreationCmd {
             AutoConstants.kPThetaController, 0.01, 0, AutoConstants.kThetaControllerConstraints);
     thetaController.enableContinuousInput(-Math.PI, Math.PI);
     // Generate trajectory
-    Trajectory trajectory =
-        TrajectoryGenerator.generateTrajectory(
-            waypoints, trajectoryConfig);
+    Trajectory trajectory = TrajectoryGenerator.generateTrajectory(waypoints, trajectoryConfig);
 
     // Construct command to follow trajectory
     SwerveControllerCommand swerveControllerCommand =
@@ -79,9 +76,7 @@ public class AutoCreationCmd {
   }
 
   public Command AutoDriveSpeedVar(
-      Double maxSpeed,
-      DrivetrainSubsystem _drivetrain,
-      List<Pose2d> waypoints) {
+      Double maxSpeed, DrivetrainSubsystem _drivetrain, List<Pose2d> waypoints) {
     drivetrain = _drivetrain;
 
     TrajectoryConfig trajectoryConfig =
@@ -95,9 +90,7 @@ public class AutoCreationCmd {
             AutoConstants.kPThetaController, 0.01, 0, AutoConstants.kThetaControllerConstraints);
     thetaController.enableContinuousInput(-Math.PI, Math.PI);
     // Generate trajectory
-    Trajectory trajectory =
-        TrajectoryGenerator.generateTrajectory(
-            waypoints, trajectoryConfig);
+    Trajectory trajectory = TrajectoryGenerator.generateTrajectory(waypoints, trajectoryConfig);
 
     // Construct command to follow trajectory
     SwerveControllerCommand swerveControllerCommand =

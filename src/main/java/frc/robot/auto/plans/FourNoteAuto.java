@@ -1,11 +1,10 @@
 package frc.robot.auto.plans;
 
 import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.Constants.AutoConstants;
 import frc.robot.auto.AutoCreationCmd;
 import frc.robot.auto.AutoFeederCmd;
 import frc.robot.auto.AutoIntakeCmd;
@@ -32,35 +31,46 @@ public class FourNoteAuto extends ParallelCommandGroup {
 
     Command showyDrive1 =
         autodrive.AutoDriveCmd(
-            drivetrain, List.of(new Translation2d(.08, 0)), new Pose2d(.2, 0, new Rotation2d(0)));
+            drivetrain,
+            List.of(
+                new Pose2d(.08, 0, AutoConstants.noRotation),
+                new Pose2d(.2, 0, AutoConstants.noRotation)));
     Command showyDrive2 =
         autodrive.AutoDriveCmd(
-            drivetrain, List.of(new Translation2d(.85, 0)), new Pose2d(1.69, 0, new Rotation2d(0)));
+            drivetrain,
+            List.of(
+                new Pose2d(.85, 0, AutoConstants.noRotation),
+                new Pose2d(1.69, 0, AutoConstants.noRotation)));
     Command showyDrive3 =
         autodrive.AutoDriveCmd(
             drivetrain,
-            List.of(new Translation2d(-.85, dash.getAlliance() * 0.01)),
-            new Pose2d(-1.60, 0, new Rotation2d(0)));
+            List.of(
+                new Pose2d(-.85, dash.getAlliance() * 0.01, AutoConstants.noRotation),
+                new Pose2d(-1.60, 0, AutoConstants.noRotation)));
     Command showyDrive4 =
         autodrive.AutoDriveCmd(
             drivetrain,
-            List.of(new Translation2d(.5, dash.getAlliance() * 1)),
-            new Pose2d(0.89, dash.getAlliance() * 1.3, new Rotation2d(0)));
+            List.of(
+                new Pose2d(.5, dash.getAlliance() * 1, AutoConstants.noRotation),
+                new Pose2d(0.89, dash.getAlliance() * 1.3, AutoConstants.noRotation)));
     Command showyDrive5 =
         autodrive.AutoDriveCmd(
             drivetrain,
-            List.of(new Translation2d(-.5, dash.getAlliance() * -1)),
-            new Pose2d(-0.84, dash.getAlliance() * -1.44, new Rotation2d(0)));
+            List.of(
+                new Pose2d(-.5, dash.getAlliance() * -1, AutoConstants.noRotation),
+                new Pose2d(-0.84, dash.getAlliance() * -1.44, AutoConstants.noRotation)));
     Command showyDrive6 =
         autodrive.AutoDriveCmd(
             drivetrain,
-            List.of(new Translation2d(.5, dash.getAlliance() * -1)),
-            new Pose2d(0.89, dash.getAlliance() * -1.44, new Rotation2d(0)));
+            List.of(
+                new Pose2d(.5, dash.getAlliance() * -1, AutoConstants.noRotation),
+                new Pose2d(0.89, dash.getAlliance() * -1.44, AutoConstants.noRotation)));
     Command showyDrive7 =
         autodrive.AutoDriveCmd(
             drivetrain,
-            List.of(new Translation2d(-.5, dash.getAlliance() * 1)),
-            new Pose2d(-0.84, dash.getAlliance() * 1.30, new Rotation2d(0)));
+            List.of(
+                new Pose2d(-.5, dash.getAlliance() * 1, AutoConstants.noRotation),
+                new Pose2d(-0.84, dash.getAlliance() * 1.30, AutoConstants.noRotation)));
     addCommands(
 
         // Driving groups

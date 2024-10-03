@@ -6,10 +6,10 @@ package frc.robot.auto.plans;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.Constants.AutoConstants;
 import frc.robot.auto.AutoCreationCmd;
 import frc.robot.auto.AutoFeederCmd;
 import frc.robot.auto.AutoShooterCmd;
@@ -32,14 +32,16 @@ public class LeftSpeakerAuto extends ParallelCommandGroup {
     Command LeftShoot =
         autodrive.AutoDriveCmd(
             drivetrain,
-            List.of(new Translation2d(0.3, 0)),
-            new Pose2d(0.76, -0.12, new Rotation2d(2 * Math.PI / 3)));
+            List.of(
+                new Pose2d(0.3, 0, AutoConstants.noRotation),
+                new Pose2d(0.76, -0.12, new Rotation2d(2 * Math.PI / 3))));
 
     Command OuttaThatBitch =
         autodrive.AutoDriveCmd(
             drivetrain,
-            List.of(new Translation2d(0.156, -0.0425)),
-            new Pose2d(1.2, -1.2, new Rotation2d(-2 * Math.PI / 6)));
+            List.of(
+                new Pose2d(0.156, -0.0425, AutoConstants.noRotation),
+                new Pose2d(1.2, -1.2, new Rotation2d(-2 * Math.PI / 6))));
 
     addCommands(
         // Drivetrain Sequential

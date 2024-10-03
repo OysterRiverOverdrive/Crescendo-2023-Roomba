@@ -5,6 +5,7 @@
 package frc.robot;
 
 import com.revrobotics.CANSparkBase.IdleMode;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
@@ -32,6 +33,8 @@ public final class Constants {
     public static final double kPXController = 8;
     public static final double kPYController = 8;
     public static final double kPThetaController = 5;
+
+    public static final Rotation2d noRotation = new Rotation2d(0);
 
     public static final TrapezoidProfile.Constraints kThetaControllerConstraints =
         new TrapezoidProfile.Constraints(

@@ -9,6 +9,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.Constants.AutoConstants;
 import frc.robot.auto.AutoCreationCmd;
 import frc.robot.auto.AutoFeederCmd;
 import frc.robot.auto.AutoIntakeCmd;
@@ -27,47 +28,43 @@ public class BlueUNHFinal1242 extends ParallelCommandGroup {
       FeederSubsystem feeder,
       ShooterSubsystem shooter) {
     AutoCreationCmd autodrive = new AutoCreationCmd();
-    Rotation2d noRotation = new Rotation2d(0);
 
     // Auto Driving Commands
     Command RightShoot =
         autodrive.AutoDriveCmd(
             drivetrain,
             List.of(
-            new Pose2d(0.3,0, noRotation),
-            new Pose2d(0.76, -0.12, new Rotation2d(2 * Math.PI / 3)))
-            );
+                new Pose2d(0.3, 0, AutoConstants.noRotation),
+                new Pose2d(0.76, -0.12, new Rotation2d(2 * Math.PI / 3))));
 
     Command RightNote =
         autodrive.AutoDriveCmd(
             drivetrain,
             List.of(
-            new Pose2d(0.156, -0.6, noRotation),
-            new Pose2d(0.95, -1.53, noRotation))
-            );
+                new Pose2d(0.156, -0.6, AutoConstants.noRotation),
+                new Pose2d(0.95, -1.53, AutoConstants.noRotation)));
 
     Command ReturnNote =
         autodrive.AutoDriveCmd(
             drivetrain,
             List.of(
-            new Pose2d(-.95 / 2, 1.53 / 2, noRotation),
-            new Pose2d(-.95, 1.63, noRotation))
-            );
+                new Pose2d(-.95 / 2, 1.53 / 2, AutoConstants.noRotation),
+                new Pose2d(-.95, 1.63, AutoConstants.noRotation)));
 
     Command Taxi =
         autodrive.AutoDriveCmd(
             drivetrain,
-            List.of(new Pose2d(1, -1, noRotation),
-            new Pose2d(1.2, -1.3, new Rotation2d(-2 * Math.PI / 6)))
-            );
+            List.of(
+                new Pose2d(1, -1, AutoConstants.noRotation),
+                new Pose2d(1.2, -1.3, new Rotation2d(-2 * Math.PI / 6))));
 
     Command race =
         autodrive.AutoDriveSpeedVar(
             5.6,
             drivetrain,
-            List.of(new Pose2d(1, 0, noRotation),
-            new Pose2d(2.3, 0, noRotation))
-            );
+            List.of(
+                new Pose2d(1, 0, AutoConstants.noRotation),
+                new Pose2d(2.3, 0, AutoConstants.noRotation)));
 
     addCommands(
         // Drivetrain Sequential

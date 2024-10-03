@@ -6,10 +6,10 @@ package frc.robot.auto.plans;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.Constants.AutoConstants;
 import frc.robot.auto.AutoCreationCmd;
 import frc.robot.auto.AutoFeederCmd;
 import frc.robot.auto.AutoIntakeCmd;
@@ -35,29 +35,33 @@ public class OutsideTwoAuto extends ParallelCommandGroup {
     Command RightShoot =
         autodrive.AutoDriveCmd(
             drivetrain,
-            List.of(new Translation2d(0.3, 0)),
-            new Pose2d(
-                0.76,
-                dash.getAlliance() * 0.12,
-                new Rotation2d(dash.getAlliance() * -2 * Math.PI / 3)));
+            List.of(
+                new Pose2d(0.3, 0, AutoConstants.noRotation),
+                new Pose2d(
+                    0.76,
+                    dash.getAlliance() * 0.12,
+                    new Rotation2d(dash.getAlliance() * -2 * Math.PI / 3))));
 
     Command RightNote =
         autodrive.AutoDriveCmd(
             drivetrain,
-            List.of(new Translation2d(0.156, dash.getAlliance() * 0.6)),
-            new Pose2d(0.95, dash.getAlliance() * 1.53, new Rotation2d(0)));
+            List.of(
+                new Pose2d(0.156, dash.getAlliance() * 0.6, AutoConstants.noRotation),
+                new Pose2d(0.95, dash.getAlliance() * 1.53, new Rotation2d(0))));
 
     Command ReturnNote =
         autodrive.AutoDriveCmd(
             drivetrain,
-            List.of(new Translation2d(-.95 / 2, dash.getAlliance() * -1.53 / 2)),
-            new Pose2d(-.95, dash.getAlliance() * -1.53, new Rotation2d(0)));
+            List.of(
+                new Pose2d(-.95 / 2, dash.getAlliance() * -1.53 / 2, AutoConstants.noRotation),
+                new Pose2d(-.95, dash.getAlliance() * -1.53, new Rotation2d(0))));
 
     Command Taxi =
         autodrive.AutoDriveCmd(
             drivetrain,
-            List.of(new Translation2d(1, 1)),
-            new Pose2d(1.2, dash.getAlliance() * 1.2, new Rotation2d(0)));
+            List.of(
+                new Pose2d(1, 1, AutoConstants.noRotation),
+                new Pose2d(1.2, dash.getAlliance() * 1.2, new Rotation2d(0))));
 
     addCommands(
         // Drivetrain Sequential

@@ -2,10 +2,10 @@ package frc.robot.auto.plans;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.Constants.AutoConstants;
 import frc.robot.auto.AutoCreationCmd;
 import frc.robot.auto.AutoFeederCmd;
 import frc.robot.auto.AutoIntakeCmd;
@@ -30,19 +30,29 @@ public class MidTwoAuto extends ParallelCommandGroup {
 
     Command showyDrive1 =
         autodrive.AutoDriveCmd(
-            drivetrain, List.of(new Translation2d(.22, 0)), new Pose2d(.5, 0, new Rotation2d(0)));
+            drivetrain,
+            List.of(
+                new Pose2d(.22, 0, AutoConstants.noRotation),
+                new Pose2d(.5, 0, new Rotation2d(0))));
     Command showyDrive2 =
         autodrive.AutoDriveCmd(
-            drivetrain, List.of(new Translation2d(.85, 0)), new Pose2d(1.30, 0, new Rotation2d(0)));
+            drivetrain,
+            List.of(
+                new Pose2d(.85, 0, AutoConstants.noRotation),
+                new Pose2d(1.30, 0, new Rotation2d(0))));
     Command showyDrive3 =
         autodrive.AutoDriveCmd(
             drivetrain,
-            List.of(new Translation2d(-.85, .2)),
-            new Pose2d(-1.25, 0, new Rotation2d(0)));
+            List.of(
+                new Pose2d(-.85, .2, AutoConstants.noRotation),
+                new Pose2d(-1.25, 0, new Rotation2d(0))));
 
     Command taxi =
         autodrive.AutoDriveCmd(
-            drivetrain, List.of(new Translation2d(.85, 0)), new Pose2d(1.30, 0, new Rotation2d(0)));
+            drivetrain,
+            List.of(
+                new Pose2d(.85, 0, AutoConstants.noRotation),
+                new Pose2d(1.30, 0, new Rotation2d(0))));
 
     addCommands(
 
