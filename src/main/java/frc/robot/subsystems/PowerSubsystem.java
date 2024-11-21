@@ -38,13 +38,6 @@ public class PowerSubsystem extends SubsystemBase {
     }
 
     // Remaining code is from edu.wpi.first.wpilibj.examples.canpdp.
-
-    // Get the current going through channel 7, in Amperes.
-    // The PDP returns the current in increments of 0.125A.
-    // At low currents the current readings tend to be less accurate.
-    double current7 = m_pdp.getCurrent(7);
-    SmartDashboard.putNumber("Current Channel 7", current7);
-
     // Get the voltage going into the PDP, in Volts.
     // The PDP returns the voltage in increments of 0.05 Volts.
     double voltage = m_pdp.getVoltage();
