@@ -1,11 +1,12 @@
-// Basic battery information. Power displays taken from 
+// Basic battery information. Power displays taken from
 // edu.wpi.first.wpilibj.examples.canpdp
 
-// The subsystem will handle power-related diagnostics, as well 
+// The subsystem will handle power-related diagnostics, as well
 // as identifying the current battery in the logs.
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -19,8 +20,8 @@ public class PowerSubsystem extends SubsystemBase {
   private String batteryID;
 
   public PowerSubsystem() {
-    
-    // Enumerate all batteries here with a unique name. When this option changes, 
+
+    // Enumerate all batteries here with a unique name. When this option changes,
     // we'll log this so we can connect log diagnostics with specific batteries.
     battery_chooser.setDefaultOption("Unknown", "Unknown Battery");
     battery_chooser.addOption("2024-1", "2024-1");
@@ -32,9 +33,8 @@ public class PowerSubsystem extends SubsystemBase {
 
     String oldBatteryID = batteryID;
     batteryID = battery_chooser.getSelected();
-    // TODO: we should output this using proper logging
     if (batteryID != null && !batteryID.equals(oldBatteryID)) {
-      System.out.println("Battery selected: " + batteryID);
+      DataLogManager.log("Battery selected: " + batteryID);
     }
 
     // Remaining code is from edu.wpi.first.wpilibj.examples.canpdp.
