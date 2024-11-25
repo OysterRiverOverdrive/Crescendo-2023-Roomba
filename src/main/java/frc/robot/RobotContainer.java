@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -25,6 +26,7 @@ import frc.robot.subsystems.FeederSubsystem;
 import frc.robot.subsystems.HangerSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
+import frc.robot.subsystems.PowerSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.utils.ControllerUtils;
 
@@ -50,6 +52,7 @@ public class RobotContainer {
   private final HangerSubsystem hanger = new HangerSubsystem();
   private final FeederSubsystem feeder = new FeederSubsystem(limelight);
   private final DashboardSubsystem dash = new DashboardSubsystem();
+  private final PowerSubsystem battery = new PowerSubsystem();
 
   // Commands
   private final TeleopCmd teleopCmd =
@@ -84,6 +87,8 @@ public class RobotContainer {
   // shooter);
 
   public RobotContainer() {
+
+    DataLogManager.start();
     // Declare default command during Teleop Period as TeleopCmd(Driving Command)
     drivetrain.setDefaultCommand(teleopCmd);
     // Amp Shot
